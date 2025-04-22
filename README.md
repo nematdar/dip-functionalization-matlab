@@ -199,8 +199,6 @@ g=imcomplement(f);
 - -------------
 - -------------
 # **References**:
-Ghadiri, H. (2025) ‘Digital Imaging (DIP in Medical Imaging Course Presentation at Department of Medical Physics and Biomedical Engineering, Tehran University of Medical
-Sciences, Tehran, Iran)’.
 
 1. Ghadiri, H. (2025). *Digital Imaging* (DIP in Medical Imaging course presentation, Department of Medical Physics and Biomedical Engineering, Tehran University of Medical Sciences, Tehran, Iran).
 2. Russ, J.C. (1995) The image processing handbook. 2. ed. Boca Raton, Fla.: CRC Press.
