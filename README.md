@@ -137,7 +137,7 @@ disp(J7);
 | `im2single(I)`            | Good for computations                  | Good for computations                                |
 | `im2double(I)`            | Good for precision-sensitive tasks     | Overkill unless high precision is needed             |
 | `mat2gray(I)`             | Useful for visualization               | Useful for visualization                             |
-| `im2uint8(mat2gray(I))`   | Not ideal                              | Useful for saving/visualization in 8-bit             |
+| `im2uint8(mat2gray(I))`   | Good for visualization                              | Useful for saving/visualization in 8-bit             |
 
 - --------------------------------------------------------------------------------------------------------------
 
