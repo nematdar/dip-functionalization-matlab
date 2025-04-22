@@ -1,5 +1,6 @@
 # dip-functionalization-matlab
- Useful MATLAB Functions for Digital Image Processing
+
+ -- Useful MATLAB Functions for Digital Image Processing --
 
 **Digital Image Processing with MATLAB: A Quick Review** 
 
@@ -11,15 +12,15 @@
 
 `s = a . r + b`
 
-% a = contrast,  b = brightness
-% For b > 0 brighter image
-% For b < 0 darker image
-% For |a| > 1 higher contrast
-% For |a| < 1 lower contrast
-% e.g. s = 2r
-% Pixels values between 0 to L/a are mapped to 0 to L-1
-%  all pixel values greater than 
-% L/2, will be equal to L-1 (max value e.g. 255) (higher contrast)
+-  a = contrast,  b = brightness
+-  For b > 0 brighter image
+-  For b < 0 darker image
+-  For |a| > 1 higher contrast
+-  For |a| < 1 lower contrast
+-  e.g. s = 2r
+-  Pixels values between 0 to L/a are mapped to 0 to L-1
+-  all pixel values greater than 
+-  L/2, will be equal to L-1 (max value e.g. 255) (higher contrast)
 % ................................................................
 ### 2. Negative image
 
@@ -31,13 +32,13 @@
 
 `S = C . r^(gamma)`
 
-% if gamma < 1:
+- if gamma < 1:
     % • Higher contrast for low pixel values
     % • Lower contrast for high pixel values
     % • mapping is weighted toward higher output (brighter image)
     % • e.g. s = 48 . r ^ (0.3) ----> brighter output
 
-% elseif gamma > 1:
+- elseif gamma > 1:
     % • Higher contrast for high pixel values
     % • Lower contrast for low pixel values
     % • mapping is weighted toward lower output (darker image) 
@@ -52,8 +53,9 @@
 
 `s = 1 / ( 1 + (m/r)^E )` ---> HIGH PASS EQUATION
 
-% % A simple tool used for image segmentation.
-% % The "threshold" is {m} and {E} controls the "slope" of the function.
+- A simple tool used for image segmentation.
+- The "threshold" is {m} and {E} controls the "slope" of the function.
+- 
 % High-pass:
     % • low intensities are removed
     % • High intensities are highlighted
@@ -73,9 +75,9 @@
 
 `h(r_k) = n_k`
 
-% imadjust used for Hist method
-% g1=im2uint8(mat2gray((1./(1+(m./f).^E1))));
-% histogram equalization 
+- imadjust used for Hist method
+`g1 = im2uint8(mat2gray((1./(1+(m./f).^E1))));`
+- histogram equalization 
 
 ```matlab
 f=imread(‘pelvis.tif’);
@@ -127,57 +129,60 @@ disp(J7);
 
 ```markdown
 
-% % % Function	               |   DICOM Images	                         |   Other Images
+- Function	               |   DICOM Images	                         |   Other Images
 ___________________________________________________________________________________________________________________
-% % % im2uint8(I)	            |   Not recommended	                      |   Good for normalized or low-dynamic-range data
-% % % im2uint16(I)	           |   Recommended	                          |   Good for high-dynamic-range data
-% % % im2int16(I)	            |   Rarely needed	                        |   Use if signed data representation is required
-% % % im2single(I)	           |   Good for computations	                |   Good for computations
-% % % im2double(I)	           |   Good for precision-sensitive tasks	   |   Overkill unless high precision is needed
-% % % mat2gray(I)	            |   Useful for visualization	             |   Useful for visualization
-% % % im2uint8(mat2gray(I)) 	 |   Not ideal	                            |   Useful for saving/visualization in 8-bit
+- im2uint8(I)	            |   Not recommended	                      |   Good for normalized or low-dynamic-range data
+- im2uint16(I)	           |   Recommended	                          |   Good for high-dynamic-range data
+- im2int16(I)	            |   Rarely needed	                        |   Use if signed data representation is required
+- im2single(I)	           |   Good for computations	                |   Good for computations
+- im2double(I)	           |   Good for precision-sensitive tasks	   |   Overkill unless high precision is needed
+- mat2gray(I)	            |   Useful for visualization	             |   Useful for visualization
+- im2uint8(mat2gray(I)) 	 |   Not ideal	                            |   Useful for saving/visualization in 8-bit
 ```
 % -------------------------------------------------------% -------------------------------------------------------
 
 ### imadjust function: for Linear and gamma correction
-% J = imadjust(I,[low-in high-in],[low-out high-out],gamma);
 
-% [low_in high_in]
-% The portion of your input intensity range that you care about.
-% Any pixel in I with value ≤ low_in will be mapped to the lowest output level.
-% Any pixel ≥ high_in will go to the highest output level.
-% Everything in between is remapped (see formula below).
-%--------
-% [low_out high_out]
-% The target range in the output image J.
-% Pixels that fell below or at low_in become low_out.
-% Pixels at or above high_in become high_out.
-% In–between values are interpolated (and optionally gamma‐corrected).
+`J = imadjust(I,[low-in high-in],[low-out high-out],gamma);`
 
+- [low_in high_in]
+- The portion of your input intensity range that you care about.
+- Any pixel in I with value ≤ low_in will be mapped to the lowest output level.
+- Any pixel ≥ high_in will go to the highest output level.
+- Everything in between is remapped (see formula below).
+- --------
+- [low_out high_out]
+- The target range in the output image J.
+- Pixels that fell below or at low_in become low_out.
+- Pixels at or above high_in become high_out.
+- In–between values are interpolated (and optionally gamma‐corrected).
+```markdown
 % gamma < 1 -----> “brightens” mid‐tones (concave).
 % gamma = 1 -----> straight linear mapping.
 % gamma > 1 -----> "darkens” mid‐tones (convex).
-
+```
 `y = ((x – low_in) / (high_in – low_in))^gamma;`   % stretch & gamma‐correction
 `y = y * (high_out – low_out) + low_out;`          % scale & shift
 `y is clipped to [0,1]`
 
-% % NOTE for imadjust:
-% % The output image will be scaled 
-% % between 0-1
-% % So, it should be scaled to 0-255 again by:
-% % g=im2uint8(f)
+```markdown
+- NOTE for imadjust:
+- The output image will be scaled 
+- between 0-1
+- So, it should be scaled to 0-255 again by:
+- g=im2uint8(f)
 
-%  f1=imadjust(f, stretchlim(f), [], 1); % [] --> default [0 1],
-%  stretchlim(f) --> automatically finds the best Min and Max
-%  the default limits [0.01 0.99], saturating the upper 1% and the lower 1%.
-%  [0.02 0.97] --> saturate the upper 3% and the lower 2%.
-%  g=im2uint8(f1);
+-  f1=imadjust(f, stretchlim(f), [], 1); % [] --> default [0 1],
+-  stretchlim(f) --> automatically finds the best Min and Max
+-  the default limits [0.01 0.99], saturating the upper 1% and the lower 1%.
+-  [0.02 0.97] --> saturate the upper 3% and the lower 2%.
+-  g=im2uint8(f1);
+```
 % -------------------------------------------------------
 
 ### imcomplement function: Making negative
 
-% %  output = imcomplement(input);
+`output = imcomplement(input);`
 
 ```matlab
 d=dicomread('1-200.dcm');
