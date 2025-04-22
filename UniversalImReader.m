@@ -48,6 +48,7 @@ end
 
 % --------------------
 % Example in program:
-% path = '2.png';
+% clc; clear
+% path = 'image.png';class = 'double';convert_to_gray = false
 % f = UniversalImReader(path)
-% imshow(f)
+% figure(1);imshow(f)

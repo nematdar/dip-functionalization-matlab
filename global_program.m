@@ -47,4 +47,14 @@ visboundaries(mask, 'Color', 'r', 'LineWidth', 0.2);
 % [B,~] = bwboundaries(mask);
 % plot(B{1}(:,2), B{1}(:,1), 'r', 'LineWidth', 1.5);
 
+%%
+clc
+clear
+m=256;
+g = ChessBoard(m);
+figure(1);
+imshow(g);
+
+
+
 

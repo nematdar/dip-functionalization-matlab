@@ -1,0 +1,9 @@
+global_program.m
+*.jpg
+*.png
+*.tif
+*.dcm
+*.bmp
+*.gif
+*.jpeg
+*.tiff
