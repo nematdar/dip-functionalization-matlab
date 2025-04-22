@@ -194,3 +194,15 @@ f=im2uint8(mat2gray(d));
 g=imcomplement(f);
 ```
 
+
+- -------------
+- -------------
+- -------------
+# **References**:
+Ghadiri, H. (2025) ‘Digital Imaging (DIP in Medical Imaging Course Presentation at Department of Medical Physics and Biomedical Engineering, Tehran University of Medical
+Sciences, Tehran, Iran)’.
+
+1. Ghadiri, H. (2025). *Digital Imaging* (DIP in Medical Imaging course presentation, Department of Medical Physics and Biomedical Engineering, Tehran University of Medical Sciences, Tehran, Iran).
+2. Russ, J.C. (1995) The image processing handbook. 2. ed. Boca Raton, Fla.: CRC Press.
+3. Gonzalez, R.C. and Woods, R.E. (2018) Digital image processing. New York, NY: Pearson.
+4. ‘Image Processing ToolboxUser’s Guide’.
